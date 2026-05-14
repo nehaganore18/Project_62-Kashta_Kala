@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+╔══════════════════════════════════════════════════════════════════════════╗
+║  res/values/dimens.xml  ─  SPACING & SIZING SYSTEM                     ║
+╚══════════════════════════════════════════════════════════════════════════╝
+
+WHY USE DIMENS?
+  Hard-coding numbers like "16dp" everywhere leads to inconsistency.
+  A dimensions file is a single source of truth — change spacing_md
+  once and every layout that references it updates automatically.
+
+SPACING SCALE (8-point grid):
+  The 8-point grid is the industry standard:
+  4 → 8 → 12 → 16 → 20 → 24 → 32 → 40 → 48 → 64 → 80 → 96
+
+  Why 8pt?  Human fingers are ~44–48dp wide. 8dp divides cleanly into
+  48dp touch targets, and multiples of 8 create visual rhythm.
+
+HOW TO USE:
+  android:padding="@dimen/spacing_md"         (in XML)
+  resources.getDimensionPixelSize(R.dimen.spacing_md)   (in Kotlin)
+-->
+
+<resources>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         BASE SPACING SCALE  (8-point grid)
+         ════════════════════════════════════════════════════════════════════ -->
+    <dimen name="spacing_xxs">4dp</dimen>    <!-- micro gap: icon-to-label, badge padding -->
+    <dimen name="spacing_xs">8dp</dimen>     <!-- tight gap: between related elements -->
+    <dimen name="spacing_sm">12dp</dimen>    <!-- small gap: inside chip padding -->
+    <dimen name="spacing_md">16dp</dimen>    <!-- standard: horizontal screen margins, card padding start/end -->
+    <dimen name="spacing_lg">20dp</dimen>    <!-- comfortable: card inner padding, section gaps -->
+    <dimen name="spacing_xl">24dp</dimen>    <!-- generous: between unrelated sections -->
+    <dimen name="spacing_xxl">32dp</dimen>   <!-- large: top/bottom section dividers -->
+    <dimen name="spacing_xxxl">48dp</dimen>  <!-- extra large: hero padding, FAB clearance -->
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         SCREEN LAYOUT MARGINS
+         ════════════════════════════════════════════════════════════════════ -->
+    <!-- Horizontal gutter from screen edge → content -->
+    <dimen name="screen_margin_horizontal">20dp</dimen>
+
+    <!-- Vertical padding at bottom of last element (prevents nav bar overlap) -->
+    <dimen name="screen_margin_bottom">32dp</dimen>
+
+    <!-- Top padding below an AppBar (when not using CoordinatorLayout) -->
+    <dimen name="screen_margin_top">16dp</dimen>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         CARD DIMENSIONS
+         ════════════════════════════════════════════════════════════════════ -->
+    <dimen name="card_corner_radius_sm">12dp</dimen>   <!-- small chips, badges -->
+    <dimen name="card_corner_radius_md">18dp</dimen>   <!-- standard cards -->
+    <dimen name="card_corner_radius_lg">22dp</dimen>   <!-- large featured cards -->
+    <dimen name="card_corner_radius_xl">24dp</dimen>   <!-- hero cards, bottom sheets -->
+
+    <dimen name="card_elevation_flat">0dp</dimen>      <!-- no shadow — tinted bg cards -->
+    <dimen name="card_elevation_low">2dp</dimen>       <!-- stats strip, info cards -->
+    <dimen name="card_elevation_md">3dp</dimen>        <!-- standard card elevation -->
+    <dimen name="card_elevation_high">5dp</dimen>      <!-- featured / portfolio cards -->
+    <dimen name="card_elevation_raised">8dp</dimen>    <!-- active / selected state -->
+
+    <dimen name="card_margin_horizontal">16dp</dimen>  <!-- card left/right screen margin -->
+    <dimen name="card_margin_bottom">16dp</dimen>      <!-- gap between stacked cards -->
+    <dimen name="card_margin_bottom_lg">20dp</dimen>   <!-- wider gap (portfolio cards) -->
+    <dimen name="card_padding">20dp</dimen>            <!-- card inner padding all sides -->
+    <dimen name="card_padding_sm">16dp</dimen>         <!-- compact card inner padding -->
+    <dimen name="card_stroke_width">1dp</dimen>        <!-- card border width -->
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         BUTTON DIMENSIONS
+         ════════════════════════════════════════════════════════════════════ -->
+    <dimen name="button_height_primary">54dp</dimen>   <!-- main CTA buttons -->
+    <dimen name="button_height_secondary">48dp</dimen> <!-- secondary/outlined buttons -->
+    <dimen name="button_height_compact">36dp</dimen>   <!-- pill buttons inside cards -->
+    <dimen name="button_corner_radius">14dp</dimen>    <!-- matches card corner feel -->
+    <dimen name="button_corner_radius_pill">18dp</dimen>   <!-- fully rounded pill shape -->
+    <dimen name="button_padding_horizontal">24dp</dimen>
+
+    <!-- Minimum touch target size — 48dp is Android accessibility guideline -->
+    <dimen name="touch_target_min">48dp</dimen>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         IMAGE / ICON SIZES
+         ════════════════════════════════════════════════════════════════════ -->
+    <dimen name="icon_xs">16dp</dimen>         <!-- inline text icon -->
+    <dimen name="icon_sm">20dp</dimen>         <!-- list item icon -->
+    <dimen name="icon_md">24dp</dimen>         <!-- toolbar icon, standard icon -->
+    <dimen name="icon_lg">28dp</dimen>         <!-- feature icon inside circle -->
+    <dimen name="icon_xl">32dp</dimen>         <!-- hero icon -->
+    <dimen name="icon_xxl">40dp</dimen>        <!-- large hero icon -->
+
+    <dimen name="icon_circle_sm">44dp</dimen>  <!-- small icon container circle -->
+    <dimen name="icon_circle_md">52dp</dimen>  <!-- standard icon container -->
+    <dimen name="icon_circle_lg">64dp</dimen>  <!-- large icon container -->
+
+    <!-- Image heights for cards -->
+    <dimen name="image_height_catalog">180dp</dimen>   <!-- furniture catalog cards -->
+    <dimen name="image_height_portfolio">240dp</dimen> <!-- portfolio project cards -->
+    <dimen name="image_height_detail">280dp</dimen>    <!-- detail / bottom sheet images -->
+    <dimen name="image_height_hero">200dp</dimen>      <!-- collapsing toolbar hero -->
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         TYPOGRAPHY SIZES  (use sp, not dp, so they respect system font scale)
+         ════════════════════════════════════════════════════════════════════ -->
+    <dimen name="text_display">48sp</dimen>    <!-- app name on splash / onboarding -->
+    <dimen name="text_h1">36sp</dimen>
+    <dimen name="text_h2">28sp</dimen>
+    <dimen name="text_h3">24sp</dimen>
+    <dimen name="text_h4">20sp</dimen>
+    <dimen name="text_h5">18sp</dimen>         <!-- card title -->
+    <dimen name="text_h6">16sp</dimen>         <!-- toolbar title, subtitle -->
+    <dimen name="text_body_lg">16sp</dimen>    <!-- standard body -->
+    <dimen name="text_body_md">14sp</dimen>    <!-- compact body, subtitles -->
+    <dimen name="text_body_sm">13sp</dimen>    <!-- card description -->
+    <dimen name="text_caption">12sp</dimen>    <!-- helper text, captions -->
+    <dimen name="text_overline">11sp</dimen>   <!-- section labels e.g. "EXPLORE" -->
+    <dimen name="text_badge">10sp</dimen>      <!-- category badge labels -->
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         DECORATIVE ELEMENTS
+         ════════════════════════════════════════════════════════════════════ -->
+    <dimen name="title_underline_width">44dp</dimen>   <!-- amber accent bar under headings -->
+    <dimen name="title_underline_height">3dp</dimen>
+    <dimen name="drag_handle_width">40dp</dimen>
+    <dimen name="drag_handle_height">4dp</dimen>
+    <dimen name="divider_height">1dp</dimen>
+
+    <!-- Stats strip vertical divider -->
+    <dimen name="stats_divider_height">44dp</dimen>
+
+    <!-- Progress / split bar -->
+    <dimen name="progress_bar_height">10dp</dimen>
+
+    <!-- Bottom sheet top corners -->
+    <dimen name="bottom_sheet_corner_radius">24dp</dimen>
+
+    <!-- Dot legend indicator -->
+    <dimen name="legend_dot_size">10dp</dimen>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         TOOLBAR & APP BAR
+         ════════════════════════════════════════════════════════════════════ -->
+    <dimen name="appbar_elevation">3dp</dimen>
+    <dimen name="hero_appbar_height">220dp</dimen>     <!-- CollapsingToolbarLayout -->
+
+</resources>

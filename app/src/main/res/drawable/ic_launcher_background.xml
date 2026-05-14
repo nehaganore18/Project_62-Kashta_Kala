@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+╔══════════════════════════════════════════════════════════════════════════╗
+║  res/drawable/ic_launcher_background.xml                                ║
+║  CONCEPT B — "The Grain Chair"  ·  BACKGROUND LAYER                    ║
+╚══════════════════════════════════════════════════════════════════════════╝
+
+CONCEPT B DESIGN:
+  Background → Warm Mango Amber  #D97706
+  Foreground → Espresso Chair Silhouette  #1C1917
+
+  The amber background feels warm, crafted, and energetic —
+  like freshly sanded teak wood catching sunlight. The subtle
+  radial highlight at top-right adds a soft glow without
+  needing a gradient resource.
+
+LAYER BREAKDOWN:
+  Layer 1 → Solid amber fill  (#D97706)
+  Layer 2 → Warm gold highlight ellipse top-right  (#F59E0B, semi-opaque)
+  Layer 3 → Very subtle bottom-left shadow  (#92400E, semi-opaque)
+            This gives the icon a gentle depth/dimension feel.
+
+WHERE TO PLACE THIS FILE:
+  app/src/main/res/drawable/ic_launcher_background.xml
+
+CANVAS SIZE:
+  108 × 108 dp  (the full adaptive icon bleed canvas)
+  Launchers crop to their preferred shape (circle, squircle, etc.)
+-->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- ── LAYER 1: Base amber fill ────────────────────────────────────── -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#D97706" />
+        </shape>
+    </item>
+
+    <!-- ── LAYER 2: Warm gold radial highlight (top-right) ─────────────
+         A softly placed gold oval that creates the illusion of light
+         catching the wood surface. Positioned in the top-right corner
+         so it stays visible after circular/squircle cropping.
+    -->
+    <item
+        android:left="52dp"
+        android:top="0dp"
+        android:right="0dp"
+        android:bottom="52dp">
+        <shape android:shape="oval">
+            <solid android:color="#F59E0B" />
+            <alpha android:alpha="0.38" />
+        </shape>
+    </item>
+
+    <!-- ── LAYER 3: Deep amber shadow (bottom-left) ─────────────────────
+         A darker oval in the opposite corner creates a subtle vignette,
+         giving the icon visual weight and preventing the background
+         from looking flat.
+    -->
+    <item
+        android:left="0dp"
+        android:top="62dp"
+        android:right="62dp"
+        android:bottom="0dp">
+        <shape android:shape="oval">
+            <solid android:color="#92400E" />
+            <alpha android:alpha="0.25" />
+        </shape>
+    </item>
+
+</layer-list>

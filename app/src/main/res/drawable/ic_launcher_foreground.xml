@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+╔══════════════════════════════════════════════════════════════════════════╗
+║  res/drawable/ic_launcher_foreground.xml                                ║
+║  CONCEPT B — "The Grain Chair"  ·  FOREGROUND LAYER                    ║
+╚══════════════════════════════════════════════════════════════════════════╝
+
+CONCEPT B DESIGN:
+  A clean, minimal chair silhouette in espresso (#1C1917) against
+  the warm amber background. The chair is the hero shape — instantly
+  communicating furniture/woodwork at a glance.
+
+CHAIR ANATOMY (all art stays within the 66dp safe zone):
+  ┌────────────────────────────────┐
+  │  Safe zone  x=21–87, y=21–87  │
+  │                                │
+  │   ┌──────────────────────┐    │  ← Top rail
+  │   │  | | | | | |         │    │  ← Back rest slats
+  │   └──────────────────────┘    │
+  │   ┌──────────────────────┐    │  ← Seat plank
+  │   │  ─ ─ ─ ─ grain ─ ─  │    │     (with grain lines)
+  │   └──────────────────────┘    │
+  │   |                     |     │  ← Front legs
+  │   └─────────────────────┘     │  ← Stretcher cross bar
+  └────────────────────────────────┘
+
+SAFE ZONE:
+  The 66dp safe zone spans x=21 to x=87, y=21 to y=87.
+  All chair paths stay within x=24–84, y=22–86.
+
+COLOURS:
+  #1C1917  Walnut Espresso — entire chair silhouette
+  #92400E  Dark amber      — wood grain lines on seat (subtle inlay detail)
+
+WHERE TO PLACE:
+  app/src/main/res/drawable/ic_launcher_foreground.xml
+-->
+
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!--
+        ═══════════════════════════════════════════════════════════════════
+        PART 1 — TOP RAIL
+        The horizontal bar across the very top of the chair back.
+        Rounded ends for a refined, modern furniture feel.
+        ═══════════════════════════════════════════════════════════════════
+    -->
+    <path
+        android:fillColor="#1C1917"
+        android:pathData="
+            M26,22
+            Q24,22 24,24
+            L24,30
+            Q24,32 26,32
+            L82,32
+            Q84,32 84,30
+            L84,24
+            Q84,22 82,22
+            Z" />
+
+    <!--
+        ═══════════════════════════════════════════════════════════════════
+        PART 2 — BACK REST SLATS  (5 vertical bars)
+        Evenly spaced vertical slats between the top rail and the seat.
+        Each slat is a rounded rectangle — mimicking turned wood spindles.
+        ═══════════════════════════════════════════════════════════════════
+    -->
+
+    <!-- Slat 1 -->
+    <path
+        android:fillColor="#1C1917"
+        android:pathData="M28,32 Q26,32 26,34 L26,52 Q26,54 28,54 L34,54 Q36,54 36,52 L36,34 Q36,32 34,32 Z" />
+
+    <!-- Slat 2 -->
+    <path
+        android:fillColor="#1C1917"
+        android:pathData="M40,32 Q38,32 38,34 L38,52 Q38,54 40,54 L46,54 Q48,54 48,52 L48,34 Q48,32 46,32 Z" />
+
+    <!-- Slat 3 — centre -->
+    <path
+        android:fillColor="#1C1917"
+        android:pathData="M52,32 Q50,32 50,34 L50,52 Q50,54 52,54 L56,54 Q58,54 58,52 L58,34 Q58,32 56,32 Z" />
+
+    <!-- Slat 4 -->
+    <path
+        android:fillColor="#1C1917"
+        android:pathData="M62,32 Q60,32 60,34 L60,52 Q60,54 62,54 L68,54 Q70,54 70,52 L70,34 Q70,32 68,32 Z" />
+
+    <!-- Slat 5 -->
+    <path
+        android:fillColor="#1C1917"
+        android:pathData="M74,32 Q72,32 72,34 L72,52 Q72,54 74,54 L80,54 Q82,54 82,52 L82,34 Q82,32 80,32 Z" />
+
+    <!--
+        ═══════════════════════════════════════════════════════════════════
+        PART 3 — SEAT PLANK
+        The main horizontal seat. Slightly wider than the back rest,
+        with a pronounced rounded rectangle for a solid, substantial feel.
+        ═══════════════════════════════════════════════════════════════════
+    -->
+    <path
+        android:fillColor="#1C1917"
+        android:pathData="
+            M22,56
+            Q20,56 20,58
+            L20,66
+            Q20,68 22,68
+            L86,68
+            Q88,68 88,66
+            L88,58
+            Q88,56 86,56
+            Z" />
+
+    <!--
+        ═══════════════════════════════════════════════════════════════════
+        PART 4 — WOOD GRAIN LINES ON SEAT
+        Two horizontal lines across the seat plank simulate the natural
+        wood grain of a solid plank seat. Use dark amber (#92400E) so
+        they are subtly visible against the espresso seat fill.
+        ═══════════════════════════════════════════════════════════════════
+    -->
+
+    <!-- Grain line 1 -->
+    <path
+        android:fillColor="#92400E"
+        android:pathData="M26,60 L82,60 L82,61.5 L26,61.5 Z" />
+
+    <!-- Grain line 2 -->
+    <path
+        android:fillColor="#92400E"
+        android:pathData="M26,64 L82,64 L82,65.2 L26,65.2 Z" />
+
+    <!--
+        ═══════════════════════════════════════════════════════════════════
+        PART 5 — FRONT LEGS  (two vertical legs below the seat)
+        Tapered slightly — wider at the top where they meet the seat,
+        narrower at the foot — classic furniture leg proportions.
+        ═══════════════════════════════════════════════════════════════════
+    -->
+
+    <!-- Left front leg -->
+    <path
+        android:fillColor="#1C1917"
+        android:pathData="
+            M24,68
+            L32,68
+            L30,86
+            Q30,87 29,87
+            L27,87
+            Q26,87 26,86
+            Z" />
+
+    <!-- Right front leg -->
+    <path
+        android:fillColor="#1C1917"
+        android:pathData="
+            M76,68
+            L84,68
+            L82,86
+            Q82,87 81,87
+            L79,87
+            Q78,87 78,86
+            Z" />
+
+    <!--
+        ═══════════════════════════════════════════════════════════════════
+        PART 6 — STRETCHER (cross bar between the legs)
+        A horizontal bar connecting the two front legs at mid-height.
+        This is a classic furniture construction detail — the stretcher
+        adds structural rigidity and visual interest to the silhouette.
+        ═══════════════════════════════════════════════════════════════════
+    -->
+    <path
+        android:fillColor="#1C1917"
+        android:pathData="
+            M26,76
+            Q25,76 25,77
+            L25,80
+            Q25,81 26,81
+            L82,81
+            Q83,81 83,80
+            L83,77
+            Q83,76 82,76
+            Z" />
+
+</vector>

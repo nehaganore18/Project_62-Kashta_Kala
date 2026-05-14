@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+╔══════════════════════════════════════════════════════════════════════════╗
+║  res/values/themes.xml  ─  KASHTA-KALA APP THEME                       ║
+╚══════════════════════════════════════════════════════════════════════════╝
+
+HOW ANDROID THEMING WORKS (beginner guide):
+  A Theme is a master style that every screen/widget inherits automatically.
+  Instead of styling every button individually, you define it ONCE here and
+  every MaterialButton in the app gets that look for free.
+
+  THEME HIERARCHY:
+    Theme.MaterialComponents.DayNight.NoActionBar   ← Material base
+      └── Theme.KashtaKala                          ← our customisations
+            └── your Activity                        ← inherits everything
+
+  To apply this theme to an Activity, add it to AndroidManifest.xml:
+    <activity android:theme="@style/Theme.KashtaKala" …>
+
+  Or apply to the whole app:
+    <application android:theme="@style/Theme.KashtaKala" …>
+-->
+
+<resources>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         MAIN APP THEME
+         ════════════════════════════════════════════════════════════════════ -->
+    <style name="Theme.KashtaKala"
+        parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
+        <!-- ── Core colours ─────────────────────────────────────────────── -->
+        <item name="colorPrimary">@color/amber_primary</item>
+        <item name="colorPrimaryVariant">@color/amber_dark</item>
+        <item name="colorOnPrimary">@color/surface_white</item>
+
+        <item name="colorSecondary">@color/teak_primary</item>
+        <item name="colorSecondaryVariant">@color/teak_dark</item>
+        <item name="colorOnSecondary">@color/surface_white</item>
+
+        <item name="colorSurface">@color/surface_white</item>
+        <item name="colorOnSurface">@color/wood_espresso</item>
+
+        <item name="android:colorBackground">@color/background_cream</item>
+        <item name="colorOnBackground">@color/wood_espresso</item>
+
+        <item name="colorError">@color/error_primary</item>
+        <item name="colorOnError">@color/surface_white</item>
+
+        <!-- ── Status bar & navigation bar ──────────────────────────────── -->
+        <item name="android:statusBarColor">@color/amber_dark</item>
+        <item name="android:navigationBarColor">@color/surface_white</item>
+
+        <!-- ── Window background ─────────────────────────────────────────── -->
+        <item name="android:windowBackground">@color/background_cream</item>
+
+        <!-- ── Typography — applied globally to all TextViews ───────────── -->
+        <!--
+            textAppearanceHeadline1–6  →  used by TextView via style attribute
+            textAppearanceBody1–2      →  default body text
+            textAppearanceCaption      →  small labels, badges
+            textAppearanceButton       →  button labels
+        -->
+        <item name="textAppearanceHeadline1">@style/TextAppearance.KashtaKala.Headline1</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.KashtaKala.Headline2</item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.KashtaKala.Headline3</item>
+        <item name="textAppearanceHeadline4">@style/TextAppearance.KashtaKala.Headline4</item>
+        <item name="textAppearanceHeadline5">@style/TextAppearance.KashtaKala.Headline5</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.KashtaKala.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.KashtaKala.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.KashtaKala.Subtitle2</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.KashtaKala.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.KashtaKala.Body2</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.KashtaKala.Caption</item>
+        <item name="textAppearanceButton">@style/TextAppearance.KashtaKala.Button</item>
+        <item name="textAppearanceOverline">@style/TextAppearance.KashtaKala.Overline</item>
+
+        <!-- ── Material component default styles ────────────────────────── -->
+        <!-- Every MaterialButton gets our style unless overridden locally  -->
+        <item name="materialButtonStyle">@style/Widget.KashtaKala.Button.Primary</item>
+        <item name="materialButtonOutlinedStyle">@style/Widget.KashtaKala.Button.Outlined</item>
+
+        <!-- Every MaterialCardView gets our corner radius + elevation     -->
+        <item name="materialCardViewStyle">@style/Widget.KashtaKala.Card</item>
+
+        <!-- TextInputLayout outlined box style                            -->
+        <item name="textInputStyle">@style/Widget.KashtaKala.TextInput</item>
+
+        <!-- Toolbar                                                        -->
+        <item name="toolbarStyle">@style/Widget.KashtaKala.Toolbar</item>
+        <item name="actionBarStyle">@style/Widget.KashtaKala.Toolbar</item>
+
+        <!-- Snackbar                                                       -->
+        <item name="snackbarStyle">@style/Widget.KashtaKala.Snackbar</item>
+        <item name="snackbarButtonStyle">@style/Widget.KashtaKala.Snackbar.Button</item>
+
+        <!-- Shape system: tells Material what corner radius to use         -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.KashtaKala.Small</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.KashtaKala.Medium</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.KashtaKala.Large</item>
+    </style>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         TYPOGRAPHY SCALE
+         Fonts: Playfair Display (display/headings) + Lato (body/UI)
+         Both are free Google Fonts — add them to res/font/ folder.
+
+         FILE NAMES TO CREATE:
+           res/font/playfair_display_bold.ttf
+           res/font/playfair_display_regular.ttf
+           res/font/lato_regular.ttf
+           res/font/lato_medium.ttf
+           res/font/lato_bold.ttf
+           res/font/lato_light.ttf
+
+         DOWNLOAD: https://fonts.google.com/specimen/Playfair+Display
+                   https://fonts.google.com/specimen/Lato
+         ════════════════════════════════════════════════════════════════════ -->
+
+    <!-- DISPLAY HEADINGS — Playfair Display (serif, elegant, artisanal) -->
+    <style name="TextAppearance.KashtaKala.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="android:textSize">48sp</item>
+        <item name="android:textColor">@color/wood_charcoal</item>
+        <item name="android:letterSpacing">-0.01</item>
+    </style>
+
+    <style name="TextAppearance.KashtaKala.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">@color/wood_charcoal</item>
+    </style>
+
+    <style name="TextAppearance.KashtaKala.Headline3" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@color/wood_espresso</item>
+    </style>
+
+    <style name="TextAppearance.KashtaKala.Headline4" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/wood_espresso</item>
+    </style>
+
+    <!-- UI HEADINGS — Playfair Display at smaller sizes -->
+    <style name="TextAppearance.KashtaKala.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/wood_espresso</item>
+    </style>
+
+    <style name="TextAppearance.KashtaKala.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/wood_espresso</item>
+    </style>
+
+    <!-- SUBTITLES — Lato Medium (clean, readable) -->
+    <style name="TextAppearance.KashtaKala.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/wood_espresso</item>
+    </style>
+
+    <style name="TextAppearance.KashtaKala.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/wood_mahogany</item>
+    </style>
+
+    <!-- BODY — Lato Regular (comfortable reading) -->
+    <style name="TextAppearance.KashtaKala.Body1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/wood_mahogany</item>
+        <item name="android:lineHeight">26sp</item>
+    </style>
+
+    <style name="TextAppearance.KashtaKala.Body2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/wood_driftwood</item>
+        <item name="android:lineHeight">22sp</item>
+    </style>
+
+    <!-- CAPTION & OVERLINE — Lato (small labels, badges, section titles) -->
+    <style name="TextAppearance.KashtaKala.Caption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/wood_driftwood</item>
+    </style>
+
+    <style name="TextAppearance.KashtaKala.Overline" parent="TextAppearance.MaterialComponents.Overline">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">@color/amber_dark</item>
+        <item name="android:letterSpacing">0.12</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="TextAppearance.KashtaKala.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:textSize">15sp</item>
+        <item name="android:letterSpacing">0.03</item>
+    </style>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         SHAPE SYSTEM
+         Material's shape system controls corner radii across components.
+         ════════════════════════════════════════════════════════════════════ -->
+    <style name="ShapeAppearance.KashtaKala.Small" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>   <!-- chips, small buttons -->
+    </style>
+
+    <style name="ShapeAppearance.KashtaKala.Medium" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">14dp</item>  <!-- cards, dialogs, text fields -->
+    </style>
+
+    <style name="ShapeAppearance.KashtaKala.Large" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20dp</item>  <!-- bottom sheets, full-width cards -->
+    </style>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         BUTTON STYLES
+         ════════════════════════════════════════════════════════════════════ -->
+
+    <!-- PRIMARY BUTTON — filled amber with white text -->
+    <!--
+        Usage in XML:   style="@style/Widget.KashtaKala.Button.Primary"
+        Or just: use the default since we set it as materialButtonStyle in theme
+    -->
+    <style name="Widget.KashtaKala.Button.Primary" parent="Widget.MaterialComponents.Button">
+        <item name="android:minHeight">52dp</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingEnd">24dp</item>
+        <item name="android:textColor">@color/surface_white</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="backgroundTint">@color/amber_primary</item>
+        <item name="rippleColor">@color/amber_deepest</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="elevation">2dp</item>
+        <item name="android:stateListAnimator">@null</item>  <!-- removes default shadow animation -->
+    </style>
+
+    <!-- SECONDARY BUTTON — amber outline, transparent fill -->
+    <style name="Widget.KashtaKala.Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:minHeight">48dp</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingEnd">20dp</item>
+        <item name="android:textColor">@color/amber_dark</item>
+        <item name="android:textSize">14sp</item>
+        <item name="backgroundTint">@color/amber_light</item>
+        <item name="strokeColor">@color/amber_medium</item>
+        <item name="strokeWidth">1.5dp</item>
+        <item name="rippleColor">@color/amber_medium</item>
+        <item name="cornerRadius">12dp</item>
+    </style>
+
+    <!-- TEXT BUTTON — no background, amber text -->
+    <style name="Widget.KashtaKala.Button.Text" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/amber_primary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="rippleColor">@color/amber_light</item>
+    </style>
+
+    <!-- DARK BUTTON — espresso fill, amber text (for dark header sections) -->
+    <style name="Widget.KashtaKala.Button.Dark" parent="Widget.MaterialComponents.Button">
+        <item name="android:minHeight">52dp</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingEnd">24dp</item>
+        <item name="android:textColor">@color/amber_primary</item>
+        <item name="android:textSize">15sp</item>
+        <item name="backgroundTint">@color/wood_charcoal</item>
+        <item name="rippleColor">@color/amber_dark</item>
+        <item name="cornerRadius">14dp</item>
+    </style>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         CARD STYLE
+         ════════════════════════════════════════════════════════════════════ -->
+    <style name="Widget.KashtaKala.Card" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/surface_white</item>
+        <item name="cardCornerRadius">18dp</item>
+        <item name="cardElevation">3dp</item>
+        <item name="strokeColor">@color/teak_light</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="rippleColor">@color/amber_light</item>
+    </style>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         TEXT INPUT STYLE
+         ════════════════════════════════════════════════════════════════════ -->
+    <style name="Widget.KashtaKala.TextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">12dp</item>
+        <item name="boxCornerRadiusTopEnd">12dp</item>
+        <item name="boxCornerRadiusBottomStart">12dp</item>
+        <item name="boxCornerRadiusBottomEnd">12dp</item>
+        <item name="boxBackgroundColor">@color/background_canvas</item>
+        <item name="boxStrokeColor">@color/amber_primary</item>
+        <item name="hintTextColor">@color/amber_primary</item>
+        <item name="errorTextColor">@color/error_primary</item>
+        <item name="boxStrokeErrorColor">@color/error_primary</item>
+    </style>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         TOOLBAR STYLE
+         ════════════════════════════════════════════════════════════════════ -->
+    <style name="Widget.KashtaKala.Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="android:background">@color/surface_white</item>
+        <item name="titleTextColor">@color/wood_espresso</item>
+        <item name="titleTextAppearance">@style/TextAppearance.KashtaKala.Headline6</item>
+        <item name="android:elevation">3dp</item>
+    </style>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         SNACKBAR STYLE
+         ════════════════════════════════════════════════════════════════════ -->
+    <style name="Widget.KashtaKala.Snackbar" parent="Widget.MaterialComponents.Snackbar">
+        <item name="android:background">@color/wood_charcoal</item>
+        <item name="android:textColor">@color/surface_white</item>
+    </style>
+
+    <style name="Widget.KashtaKala.Snackbar.Button" parent="Widget.MaterialComponents.Button.TextButton.Snackbar">
+        <item name="android:textColor">@color/amber_primary</item>
+    </style>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         BOTTOM SHEET DIALOG THEME OVERLAY
+         ════════════════════════════════════════════════════════════════════
+         Apply via:  BottomSheetDialog(this, R.style.BottomSheet.KashtaKala)
+    -->
+    <style name="BottomSheet.KashtaKala" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Widget.KashtaKala.BottomSheet</item>
+    </style>
+
+    <style name="Widget.KashtaKala.BottomSheet" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="shapeAppearance">@style/ShapeAppearance.KashtaKala.BottomSheet</item>
+        <item name="android:background">@color/surface_white</item>
+    </style>
+
+    <style name="ShapeAppearance.KashtaKala.BottomSheet" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">24dp</item>
+        <item name="cornerSizeTopRight">24dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         SPECIFIC COMPONENT STYLES  (apply directly in XML when needed)
+         ════════════════════════════════════════════════════════════════════ -->
+
+    <!-- Base TextStyle to support dot notation inheritance -->
+    <style name="TextStyle.KashtaKala" parent="" />
+
+    <!-- Section overline label: "EXPLORE", "COMPLETED WORKS", etc. -->
+    <style name="TextStyle.KashtaKala.SectionLabel">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">@color/amber_dark</item>
+        <item name="android:letterSpacing">0.13</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <!-- Card project title -->
+    <style name="TextStyle.KashtaKala.CardTitle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/wood_espresso</item>
+        <item name="android:lineSpacingMultiplier">1.15</item>
+    </style>
+
+    <!-- Card body / description text -->
+    <style name="TextStyle.KashtaKala.CardBody">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/wood_mahogany</item>
+        <item name="android:lineSpacingMultiplier">1.55</item>
+    </style>
+
+    <!-- Price text in catalog cards -->
+    <style name="TextStyle.KashtaKala.Price">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/amber_primary</item>
+    </style>
+
+    <!-- Big result number (calculator, cost estimator) -->
+    <style name="TextStyle.KashtaKala.ResultDisplay">
+        <item name="android:textSize">40sp</item>
+        <item name="android:textColor">@color/success_dark</item>
+    </style>
+
+</resources>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+╔══════════════════════════════════════════════════════════════════════════╗
+║  res/values/colors.xml  ─  KASHTA-KALA COLOR PALETTE                   ║
+╚══════════════════════════════════════════════════════════════════════════╝
+
+DESIGN PHILOSOPHY — "Warm Workshop"
+  Inspired by the colours of a master craftsman's studio:
+  rich teakwood browns, fresh-cut mango ambers, aged walnut darks,
+  and the pale cream of a workshop wall.
+
+  The palette has THREE tiers:
+  ┌─────────────────────────────────────────────────────────────────────┐
+  │  TIER 1 – BRAND CORE   (primary brand identity)                     │
+  │  TIER 2 – SURFACE      (backgrounds, cards, containers)             │
+  │  TIER 3 – SEMANTIC     (success, warning, error, info)              │
+  └─────────────────────────────────────────────────────────────────────┘
+
+HOW TO USE IN XML:
+  android:textColor="@color/wood_espresso"
+  android:background="@color/surface_warm"
+  app:backgroundTint="@color/amber_primary"
+
+HOW TO USE IN KOTLIN:
+  val color = ContextCompat.getColor(this, R.color.amber_primary)
+-->
+
+<resources>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         TIER 1 — BRAND CORE COLOURS
+         ════════════════════════════════════════════════════════════════════
+         Built around the three woods most used in Indian furniture:
+         Teak (warm golden-brown), Sheesham (deep rosewood), Mango (bright amber)
+    -->
+
+    <!-- PRIMARY — Mango Amber (CTAs, buttons, active states, accents) -->
+    <color name="amber_primary">#D97706</color>       <!-- main amber — button fills, active rings -->
+    <color name="amber_light">#FEF3C7</color>          <!-- very pale amber — card tints, badge bg -->
+    <color name="amber_medium">#FDE68A</color>         <!-- soft amber — borders, dividers, chips -->
+    <color name="amber_dark">#92400E</color>           <!-- deep amber — text on light amber bg -->
+    <color name="amber_deepest">#78350F</color>        <!-- darkest amber — pressed states, emphasis -->
+
+    <!-- SECONDARY — Teak Brown (headings, toolbar, dark surfaces) -->
+    <color name="teak_primary">#A0522D</color>         <!-- sienna — secondary buttons, icon tints -->
+    <color name="teak_light">#F5F0E8</color>           <!-- bleached linen — card strokes, bg tint -->
+    <color name="teak_medium">#C4956A</color>          <!-- tan wood — progress fills, decorative -->
+    <color name="teak_dark">#6B3A2A</color>            <!-- dark teak — section headers, dividers -->
+    <color name="teak_deepest">#3B1F14</color>         <!-- near-black brown — scrim overlays -->
+
+    <!-- ACCENT — Walnut Espresso (primary text, headings) -->
+    <color name="wood_espresso">#1C1917</color>        <!-- almost black brown — primary body text -->
+    <color name="wood_charcoal">#292524</color>        <!-- very dark brown — display headings -->
+    <color name="wood_mahogany">#44403C</color>        <!-- mid-brown — secondary text -->
+    <color name="wood_driftwood">#78716C</color>       <!-- warm grey-brown — hint text, captions -->
+    <color name="wood_ash">#A8A29E</color>             <!-- light grey-brown — disabled text, icons -->
+    <color name="wood_mist">#D6D3D1</color>            <!-- pale grey-brown — dividers, borders -->
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         TIER 2 — SURFACE & BACKGROUND COLOURS
+         ════════════════════════════════════════════════════════════════════
+         All backgrounds follow a "warm" tint — no cold greys.
+    -->
+
+    <!-- Page / screen backgrounds -->
+    <color name="background_cream">#FFF8F2</color>     <!-- warm off-white — main screen backgrounds -->
+    <color name="background_parchment">#FEF9F0</color> <!-- slightly warmer — section panel bg -->
+    <color name="background_canvas">#FDFAF6</color>    <!-- near-white linen — input field fills -->
+
+    <!-- Card surfaces -->
+    <color name="surface_white">#FFFFFF</color>        <!-- pure white — card backgrounds -->
+    <color name="surface_warm">#FFFBF5</color>         <!-- warm white — elevated surfaces -->
+    <color name="surface_tinted">#FFF3E0</color>       <!-- light amber — header card, hero tints -->
+
+    <!-- Dark surfaces (toolbar when collapsed, scrim, dark cards) -->
+    <color name="surface_dark">#1C1917</color>         <!-- dark espresso — collapsed toolbar bg -->
+    <color name="surface_dark_medium">#292524</color>  <!-- charcoal — dark card variant -->
+    <color name="scrim_dark">#CC000000</color>         <!-- 80 % black — image scrim overlays -->
+    <color name="scrim_medium">#80000000</color>       <!-- 50 % black — hero image overlay -->
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         TIER 3 — SEMANTIC COLOURS
+         ════════════════════════════════════════════════════════════════════
+         Standard UX colour meanings, all warm-tinted to fit the palette.
+    -->
+
+    <!-- SUCCESS — forest sage (calculation done, saved, confirmed) -->
+    <color name="success_primary">#059669</color>      <!-- emerald — success icons, check marks -->
+    <color name="success_light">#D1FAE5</color>        <!-- pale green — success card background -->
+    <color name="success_dark">#065F46</color>         <!-- deep green — success text, borders -->
+
+    <!-- WARNING — amber (already primary; reuse for warning badges) -->
+    <color name="warning_primary">#D97706</color>      <!-- same as amber_primary -->
+    <color name="warning_light">#FEF3C7</color>        <!-- same as amber_light -->
+
+    <!-- ERROR — terracotta (warm, not cold neon red) -->
+    <color name="error_primary">#DC2626</color>        <!-- brick red — error icons, borders -->
+    <color name="error_light">#FEE2E2</color>          <!-- pale rose — error input bg, toast bg -->
+    <color name="error_dark">#7F1D1D</color>           <!-- deep red — error text -->
+
+    <!-- INFO — slate blue (neutral, legible on warm backgrounds) -->
+    <color name="info_primary">#2563EB</color>         <!-- blue — informational banners -->
+    <color name="info_light">#DBEAFE</color>           <!-- pale blue — info card background -->
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         MATERIAL COMPONENTS THEME BINDINGS
+         ════════════════════════════════════════════════════════════════════
+         These MUST be named exactly as below — Material Components reads
+         these specific names from your theme to colour every widget.
+    -->
+    <color name="colorPrimary">#D97706</color>         <!-- toolbar, FAB, active tabs -->
+    <color name="colorPrimaryVariant">#92400E</color>  <!-- status bar, pressed primary -->
+    <color name="colorOnPrimary">#FFFFFF</color>       <!-- text/icons ON primary colour -->
+
+    <color name="colorSecondary">#A0522D</color>       <!-- chips, sliders, checkboxes -->
+    <color name="colorSecondaryVariant">#6B3A2A</color>
+    <color name="colorOnSecondary">#FFFFFF</color>
+
+    <color name="colorSurface">#FFFFFF</color>         <!-- card surfaces -->
+    <color name="colorOnSurface">#1C1917</color>       <!-- text on cards -->
+
+    <color name="colorBackground">#FFF8F2</color>      <!-- window background -->
+    <color name="colorOnBackground">#1C1917</color>    <!-- text on window background -->
+
+    <color name="colorError">#DC2626</color>
+    <color name="colorOnError">#FFFFFF</color>
+
+</resources>

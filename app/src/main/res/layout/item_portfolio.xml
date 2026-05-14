@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+╔═══════════════════════════════════════════════════════════════════╗
+║  item_portfolio.xml  ─  SINGLE PORTFOLIO CARD LAYOUT             ║
+╚═══════════════════════════════════════════════════════════════════╝
+
+WHAT IS THIS?
+  This XML describes how ONE portfolio card looks.
+  RecyclerView stamps this template for every project in your list.
+
+CARD ANATOMY (top → bottom):
+  ┌─────────────────────────────────────────────────────┐
+  │                                                     │
+  │            PROJECT IMAGE  (240 dp tall)             │
+  │                                                     │
+  │  ╔══════════╗                     📅  March 2024   │  ← image overlay
+  │  ║ SEATING  ║                                       │
+  │  ╚══════════╝                                       │
+  ├─────────────────────────────────────────────────────┤
+  │  Project Name  (bold, 18sp)                         │
+  │  ─────────── amber underline ───────────            │
+  │  Description text  (max 3 lines, ellipsis)          │
+  │                                                     │
+  │  👤 Sharma Family                 [ View Details ]  │
+  └─────────────────────────────────────────────────────┘
+-->
+
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardPortfolioItem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginBottom="20dp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardCornerRadius="22dp"
+    app:cardElevation="5dp"
+    app:cardBackgroundColor="#FFFFFF"
+    app:rippleColor="#FBBF24"
+    app:strokeColor="#F5F0E8"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- ══ IMAGE + OVERLAY AREA ══════════════════════════════════════
+             FrameLayout stacks views on top of each other.
+             Layer order (bottom → top): image → gradient scrim → chips   -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="240dp">
+
+            <!-- PROJECT IMAGE ─────────────────────────────────────────
+                 scaleType="centerCrop" fills the box and crops edges,
+                 like a cover-photo.  Replace src with your own drawables. -->
+            <ImageView
+                android:id="@+id/ivPortfolioImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:contentDescription="Portfolio project image"
+                android:src="@drawable/img_placeholder"
+                android:background="#FEF3C7" />
+
+            <!-- GRADIENT SCRIM ─────────────────────────────────────────
+                 A dark gradient over the bottom of the image makes the
+                 white category badge and date text readable on any photo. -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/bg_image_scrim" />
+
+            <!-- OVERLAY ROW: category badge (left)  +  date (right) ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:paddingBottom="14dp">
+
+                <!-- CATEGORY BADGE pill -->
+                <TextView
+                    android:id="@+id/tvPortfolioCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Seating"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.10"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:background="@drawable/bg_badge_amber" />
+
+                <!-- Flexible space pushes date to the right -->
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <!-- COMPLETION DATE -->
+                <TextView
+                    android:id="@+id/tvCompletionDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📅 Mar 2024"
+                    android:textColor="#F9FAFB"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+
+            <!-- DELETE BUTTON (Admin Only) -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDeletePortfolioItem"
+                style="@style/Widget.MaterialComponents.Button.Icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="top|end"
+                android:layout_margin="12dp"
+                android:padding="0dp"
+                android:visibility="gone"
+                app:backgroundTint="#80FFFFFF"
+                app:cornerRadius="20dp"
+                app:icon="@drawable/ic_delete"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="20dp"
+                app:iconTint="#EF4444"
+                app:rippleColor="#FEE2E2" />
+        </FrameLayout>
+
+        <!-- ══ TEXT CONTENT ═════════════════════════════════════════════ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp">
+
+            <!-- PROJECT NAME -->
+            <TextView
+                android:id="@+id/tvProjectName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Solid Teak King Bed"
+                android:textColor="#1C1917"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:lineSpacingMultiplier="1.1" />
+
+            <!-- AMBER UNDERLINE ACCENT (decorative divider) -->
+            <View
+                android:layout_width="44dp"
+                android:layout_height="3dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bg_title_underline" />
+
+            <!-- DESCRIPTION ────────────────────────────────────────────
+                 maxLines="3" + ellipsize="end" shows "…" if text is long. -->
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="A custom king-size bed handcrafted from premium teak with carved headboard detailing and antique brass fittings."
+                android:textColor="#57534E"
+                android:textSize="13sp"
+                android:lineSpacingMultiplier="1.55"
+                android:maxLines="3"
+                android:ellipsize="end"
+                android:layout_marginBottom="14dp" />
+
+            <!-- BOTTOM ROW: client name (left)  +  Details button (right) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- CLIENT ICON -->
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_person"
+                    android:contentDescription="Client"
+                    android:layout_marginEnd="6dp"
+                    app:tint="#A8A29E" />
+
+                <!-- CLIENT NAME -->
+                <TextView
+                    android:id="@+id/tvClientName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Sharma Family"
+                    android:textColor="#78716C"
+                    android:textSize="12sp" />
+
+                <!-- VIEW DETAILS PILL BUTTON -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnViewDetails"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:text="Details"
+                    android:textSize="12sp"
+                    android:textColor="#92400E"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    app:backgroundTint="#FEF3C7"
+                    app:cornerRadius="18dp"
+                    app:strokeColor="#FDE68A"
+                    app:strokeWidth="1dp"
+                    app:rippleColor="#FDE68A" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

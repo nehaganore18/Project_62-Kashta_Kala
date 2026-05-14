@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+╔═══════════════════════════════════════════════════════════════════╗
+║  bottom_sheet_portfolio_detail.xml  ─  TAP-TO-VIEW DETAIL PANEL  ║
+╚═══════════════════════════════════════════════════════════════════╝
+
+WHAT IS THIS?
+  This layout slides up from the bottom of the screen when a user
+  taps any portfolio card.  It shows the FULL project details.
+
+VISUAL STRUCTURE:
+  ┌────────────────────────────────────────────────────┐
+  │   — drag handle —                                  │
+  │                                                    │
+  │        PROJECT IMAGE  (220dp)                      │
+  │                                                    │
+  │   ╔══════════╗                                     │
+  │   ║ BEDROOM  ║   📅  March 2024                   │
+  │                                                    │
+  │   Project Name  (bold, 20sp)                       │
+  │   ─── amber accent line ───                        │
+  │                                                    │
+  │   Full description paragraph                       │
+  │                                                    │
+  │   ──────────────────────────────────               │
+  │   👤  Sharma Family, Bengaluru                     │
+  │   📅  March 2024                                   │
+  └────────────────────────────────────────────────────┘
+-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_bottom_sheet">
+
+    <!-- ── DRAG HANDLE ──────────────────────────────────────────────── -->
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_drag_handle" />
+
+    <!-- ── PROJECT IMAGE ────────────────────────────────────────────── -->
+    <ImageView
+        android:id="@+id/ivSheetImage"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="Project detail image"
+        android:src="@drawable/img_placeholder"
+        android:background="#FEF3C7" />
+
+    <!-- ── CONTENT PADDING ──────────────────────────────────────────── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Category + Date row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:id="@+id/tvSheetCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bedroom"
+                android:textColor="#92400E"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.10"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:background="@drawable/bg_badge_amber" />
+
+            <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tvSheetDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📅 March 2024"
+                android:textColor="#78716C"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- PROJECT NAME -->
+        <TextView
+            android:id="@+id/tvSheetProjectName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Royal Teak King Bed"
+            android:textColor="#1C1917"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:lineSpacingMultiplier="1.1" />
+
+        <!-- Amber accent underline -->
+        <View
+            android:layout_width="44dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/bg_title_underline" />
+
+        <!-- FULL DESCRIPTION -->
+        <TextView
+            android:id="@+id/tvSheetDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Full project description here."
+            android:textColor="#44403C"
+            android:textSize="14sp"
+            android:lineSpacingMultiplier="1.65"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#F3F4F6"
+            android:layout_marginBottom="16dp" />
+
+        <!-- CLIENT ROW -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/ic_person"
+                android:contentDescription="Client"
+                android:layout_marginEnd="10dp"
+                app:tint="#D97706" />
+
+            <TextView
+                android:id="@+id/tvSheetClient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sharma Family, Bengaluru"
+                android:textColor="#1C1917"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Bottom spacer so content clears phone nav bars -->
+        <View android:layout_width="match_parent" android:layout_height="24dp" />
+
+    </LinearLayout>
+</LinearLayout>

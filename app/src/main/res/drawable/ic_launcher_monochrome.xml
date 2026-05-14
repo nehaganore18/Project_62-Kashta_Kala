@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+╔══════════════════════════════════════════════════════════════════════════╗
+║  res/drawable/ic_launcher_monochrome.xml                                ║
+║  CONCEPT B — "The Grain Chair"  ·  MONOCHROME LAYER (Android 13+)      ║
+╚══════════════════════════════════════════════════════════════════════════╝
+
+PURPOSE:
+  Android 13+ "Material You" themed icons. When the user enables themed
+  icons, Android extracts a colour from their wallpaper and tints this
+  silhouette with that colour. Result: your icon harmonises with their
+  home screen colour theme.
+
+RULES FOR THIS LAYER:
+  • Use ONLY #000000 as fill colour — Android replaces it at runtime
+  • Pure silhouette — no grain lines, no highlights, no gradients
+  • Same chair shape as the foreground, simplified to one solid form
+  • All art within the 66dp safe zone
+
+HOW TO ACTIVATE:
+  Uncomment the <monochrome> line in:
+    res/mipmap-anydpi-v26/ic_launcher.xml
+    res/mipmap-anydpi-v26/ic_launcher_round.xml
+-->
+
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Top rail -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M26,22 Q24,22 24,24 L24,30 Q24,32 26,32 L82,32 Q84,32 84,30 L84,24 Q84,22 82,22 Z" />
+
+    <!-- Back slat 1 -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M28,32 Q26,32 26,34 L26,52 Q26,54 28,54 L34,54 Q36,54 36,52 L36,34 Q36,32 34,32 Z" />
+
+    <!-- Back slat 2 -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M40,32 Q38,32 38,34 L38,52 Q38,54 40,54 L46,54 Q48,54 48,52 L48,34 Q48,32 46,32 Z" />
+
+    <!-- Back slat 3 -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M52,32 Q50,32 50,34 L50,52 Q50,54 52,54 L56,54 Q58,54 58,52 L58,34 Q58,32 56,32 Z" />
+
+    <!-- Back slat 4 -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M62,32 Q60,32 60,34 L60,52 Q60,54 62,54 L68,54 Q70,54 70,52 L70,34 Q70,32 68,32 Z" />
+
+    <!-- Back slat 5 -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M74,32 Q72,32 72,34 L72,52 Q72,54 74,54 L80,54 Q82,54 82,52 L82,34 Q82,32 80,32 Z" />
+
+    <!-- Seat plank (solid, no grain lines) -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M22,56 Q20,56 20,58 L20,66 Q20,68 22,68 L86,68 Q88,68 88,66 L88,58 Q88,56 86,56 Z" />
+
+    <!-- Left front leg -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M24,68 L32,68 L30,86 Q30,87 29,87 L27,87 Q26,87 26,86 Z" />
+
+    <!-- Right front leg -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M76,68 L84,68 L82,86 Q82,87 81,87 L79,87 Q78,87 78,86 Z" />
+
+    <!-- Stretcher -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M26,76 Q25,76 25,77 L25,80 Q25,81 26,81 L82,81 Q83,81 83,80 L83,77 Q83,76 82,76 Z" />
+
+</vector>

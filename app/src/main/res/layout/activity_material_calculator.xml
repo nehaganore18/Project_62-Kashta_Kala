@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+╔══════════════════════════════════════════════════════════════════╗
+║  activity_material_calculator.xml  —  MATERIAL CALCULATOR UI     ║
+╚══════════════════════════════════════════════════════════════════╝
+
+SCREEN LAYOUT (top → bottom):
+  ┌─────────────────────────────────────┐
+  │  ← Toolbar  "Material Calculator"  │
+  ├─────────────────────────────────────┤
+  │  📐 Header card  (icon + title)     │
+  ├─────────────────────────────────────┤
+  │  📏 Length input field              │
+  │  📏 Width  input field              │
+  │  [CALCULATE AREA] button            │
+  ├─────────────────────────────────────┤
+  │  ✅ Result card  (shows area)       │
+  ├─────────────────────────────────────┤
+  │  Formula reference strip            │
+  └─────────────────────────────────────┘
+-->
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF8F2">
+
+    <!-- ── TOP APP BAR ──────────────────────────────────────────────────── -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        app:elevation="3dp">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="Material Calculator"
+            app:titleTextColor="#1C1917"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:navigationIconTint="#1C1917"
+            android:background="#FFFFFF" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- ── SCROLLABLE BODY ──────────────────────────────────────────────── -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:paddingTop="?attr/actionBarSize"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- ── HEADER CARD ─────────────────────────────────────────── -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#FEF3C7"
+                app:strokeColor="#FDE68A"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="20dp"
+                    android:gravity="center_vertical">
+
+                    <!-- Icon circle -->
+                    <FrameLayout
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:background="@drawable/bg_icon_circle_amber">
+
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_calculate"
+                            android:contentDescription="Calculator icon"
+                            app:tint="#92400E" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Wood Area Calculator"
+                            android:textColor="#1C1917"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="Enter dimensions to calculate material needed"
+                            android:textColor="#78716C"
+                            android:textSize="12sp"
+                            android:lineSpacingMultiplier="1.3" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ── INPUT CARD ──────────────────────────────────────────── -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="3dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:strokeColor="#F5F0E8"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <!-- Section title -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:text="DIMENSIONS"
+                        android:textColor="#92400E"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.12" />
+
+                    <!-- LENGTH INPUT ──────────────────────────────────── -->
+                    <!--
+                        TextInputLayout wraps the EditText to show:
+                        • Floating label (animates up when you type)
+                        • Error message below the field
+                        • End icon (suffix unit label)
+                    -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilLength"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:hint="Length"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxBackgroundColor="#FFF8F2"
+                        app:boxStrokeColor="#D97706"
+                        app:hintTextColor="#D97706"
+                        app:endIconMode="custom"
+                        app:endIconDrawable="@drawable/ic_straighten"
+                        app:endIconTint="#D97706"
+                        app:suffixText="ft"
+                        app:suffixTextColor="#92400E"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etLength"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:textColor="#1C1917"
+                            android:textSize="16sp"
+                            android:paddingTop="16dp"
+                            android:paddingBottom="16dp"
+                            android:imeOptions="actionNext" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- WIDTH INPUT ────────────────────────────────────── -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilWidth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Width"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxBackgroundColor="#FFF8F2"
+                        app:boxStrokeColor="#D97706"
+                        app:hintTextColor="#D97706"
+                        app:endIconMode="custom"
+                        app:endIconDrawable="@drawable/ic_straighten"
+                        app:endIconTint="#D97706"
+                        app:suffixText="ft"
+                        app:suffixTextColor="#92400E"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etWidth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:textColor="#1C1917"
+                            android:textSize="16sp"
+                            android:paddingTop="16dp"
+                            android:paddingBottom="16dp"
+                            android:imeOptions="actionDone" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- CALCULATE BUTTON ───────────────────────────────── -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnCalculate"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Calculate Area"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF"
+                        android:letterSpacing="0.04"
+                        app:backgroundTint="#D97706"
+                        app:cornerRadius="14dp"
+                        app:rippleColor="#92400E"
+                        app:icon="@drawable/ic_calculate"
+                        app:iconTint="#FFFFFF"
+                        app:iconGravity="textStart"
+                        app:iconPadding="8dp" />
+
+                    <!-- CLEAR BUTTON ───────────────────────────────────── -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnClear"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Clear"
+                        android:textSize="14sp"
+                        android:textColor="#92400E"
+                        app:backgroundTint="#FEF3C7"
+                        app:cornerRadius="12dp"
+                        app:rippleColor="#FDE68A"
+                        app:strokeColor="#FDE68A"
+                        app:strokeWidth="1dp"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ── RESULT CARD (hidden until calculated) ──────────────── -->
+            <!--
+                visibility="gone" means the card is completely hidden
+                and takes up NO space until we set it to VISIBLE in Kotlin.
+            -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:strokeColor="#6EE7B7"
+                app:strokeWidth="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp"
+                    android:gravity="center">
+
+                    <!-- Green check circle -->
+                    <FrameLayout
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/bg_icon_circle_green"
+                        android:layout_marginBottom="16dp">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_check_circle"
+                            android:contentDescription="Result"
+                            app:tint="#065F46" />
+                    </FrameLayout>
+
+                    <!-- Label above result -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TOTAL WOOD AREA REQUIRED"
+                        android:textColor="#6B7280"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.1"
+                        android:layout_marginBottom="8dp" />
+
+                    <!-- BIG RESULT NUMBER -->
+                    <TextView
+                        android:id="@+id/tvResult"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0.00 sq ft"
+                        android:textColor="#065F46"
+                        android:textSize="38sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="6dp" />
+
+                    <!-- Sub-label with formula used -->
+                    <TextView
+                        android:id="@+id/tvFormulaSummary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Length × Width = Area"
+                        android:textColor="#9CA3AF"
+                        android:textSize="13sp"
+                        android:layout_marginBottom="16dp" />
+
+                    <!-- Divider line -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#F3F4F6"
+                        android:layout_marginBottom="16dp" />
+
+                    <!-- Two stat chips: length and width used -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <!-- Length chip -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:background="@drawable/bg_stat_chip"
+                            android:padding="12dp"
+                            android:layout_marginEnd="8dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="LENGTH"
+                                android:textColor="#6B7280"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                android:letterSpacing="0.1" />
+
+                            <TextView
+                                android:id="@+id/tvUsedLength"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="— ft"
+                                android:textColor="#1C1917"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:layout_marginTop="2dp" />
+                        </LinearLayout>
+
+                        <!-- Width chip -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:background="@drawable/bg_stat_chip"
+                            android:padding="12dp"
+                            android:layout_marginStart="8dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="WIDTH"
+                                android:textColor="#6B7280"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                android:letterSpacing="0.1" />
+
+                            <TextView
+                                android:id="@+id/tvUsedWidth"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="— ft"
+                                android:textColor="#1C1917"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:layout_marginTop="2dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ── FORMULA REFERENCE CARD ──────────────────────────────── -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#FEF9F0"
+                app:strokeColor="#FDE68A"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📐  Formula Used"
+                        android:textColor="#92400E"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Area  =  Length  ×  Width"
+                        android:textColor="#1C1917"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="6dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Result is in square feet (sq ft).\nAdd 10–15% extra for cutting waste."
+                        android:textColor="#78716C"
+                        android:textSize="12sp"
+                        android:lineSpacingMultiplier="1.5" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

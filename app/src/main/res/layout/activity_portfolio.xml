@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+╔═══════════════════════════════════════════════════════════════════╗
+║  activity_portfolio.xml  ─  PORTFOLIO SCREEN LAYOUT              ║
+╚═══════════════════════════════════════════════════════════════════╝
+
+VISUAL STRUCTURE (top → bottom):
+  ┌─────────────────────────────────────────────┐
+  │   COLLAPSING HERO HEADER (220 dp)           │
+  │   "My Portfolio"  (shrinks to toolbar)      │
+  ├─────────────────────────────────────────────┤
+  │   STATS STRIP  │ 8 Projects │ 5 Types │ … │ │
+  ├─────────────────────────────────────────────┤
+  │   "COMPLETED WORKS" section label           │
+  ├─────────────────────────────────────────────┤
+  │   RecyclerView  ↕  (scrollable card list)   │
+  └─────────────────────────────────────────────┘
+
+KEY LAYOUT NOTES FOR BEGINNERS:
+  • CoordinatorLayout lets the AppBar react to scrolling.
+  • CollapsingToolbarLayout creates the big hero that shrinks to a toolbar.
+  • NestedScrollView wraps the body so it works smoothly with the CollapsingToolbar.
+  • nestedScrollingEnabled="false" on RecyclerView is required when it sits
+    inside a NestedScrollView — otherwise not all cards load correctly.
+-->
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF8F2">
+
+    <!-- ══ COLLAPSING HERO APP BAR ════════════════════════════════════════ -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:fitsSystemWindows="true"
+        app:elevation="0dp">
+
+        <!--
+            CollapsingToolbarLayout:
+            • scroll|exitUntilCollapsed  → header scrolls away but toolbar stays
+            • contentScrim               → colour shown when fully collapsed
+            • parallax on the ImageView  → creates a depth effect while scrolling
+        -->
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:contentScrim="#1C1917"
+            app:title="My Portfolio"
+            app:collapsedTitleTextAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            app:expandedTitleMarginStart="20dp"
+            app:expandedTitleMarginBottom="24dp">
+
+            <!-- Hero background (warm amber gradient) -->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_placeholder"
+                android:background="@drawable/bg_header_gradient"
+                android:contentDescription="Portfolio hero background"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.5" />
+
+            <!-- Dark scrim so title is readable over any image colour -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#80000000"
+                app:layout_collapseMode="parallax" />
+
+            <!-- Back arrow toolbar pinned at the top -->
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:navigationIcon="@drawable/ic_arrow_back"
+                app:navigationIconTint="#FFFFFF"
+                app:layout_collapseMode="pin">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAddWork"
+                    style="@style/Widget.KashtaKala.Button.Primary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginEnd="16dp"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="0dp"
+                    android:text="Add Work"
+                    android:textSize="12sp"
+                    android:textColor="@color/surface_white"
+                    android:visibility="gone"
+                    app:icon="@drawable/ic_check_circle"
+                    app:iconSize="16dp"
+                    app:iconTint="@color/surface_white"
+                    app:cornerRadius="18dp" />
+
+            </com.google.android.material.appbar.MaterialToolbar>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- ══ SCROLLABLE BODY ════════════════════════════════════════════════ -->
+    <!--
+        app:layout_behavior ensures this view starts BELOW the AppBar.
+        NestedScrollView is used instead of ScrollView so it cooperates
+        with CollapsingToolbarLayout properly.
+    -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- ── STATS STRIP ─────────────────────────────────────── -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="4dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:strokeColor="#F5F0E8"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="18dp"
+                    android:paddingBottom="18dp">
+
+                    <!-- Stat 1 – Projects -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="8"
+                            android:textColor="#D97706"
+                            android:textSize="26sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Projects"
+                            android:textColor="#78716C"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <View android:layout_width="1dp" android:layout_height="44dp"
+                        android:layout_gravity="center" android:background="#F3F4F6" />
+
+                    <!-- Stat 2 – Categories -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="5"
+                            android:textColor="#D97706"
+                            android:textSize="26sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Categories"
+                            android:textColor="#78716C"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <View android:layout_width="1dp" android:layout_height="44dp"
+                        android:layout_gravity="center" android:background="#F3F4F6" />
+
+                    <!-- Stat 3 – Clients -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="8"
+                            android:textColor="#D97706"
+                            android:textSize="26sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Clients"
+                            android:textColor="#78716C"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ── SECTION LABEL ───────────────────────────────────── -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="4dp"
+                android:text="COMPLETED WORKS"
+                android:textColor="#92400E"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.13" />
+
+            <!-- ── RECYCLERVIEW ─────────────────────────────────────
+                 nestedScrollingEnabled="false" is REQUIRED here.
+                 Without it, inside a NestedScrollView the list won't
+                 scroll properly and may not render all items.         -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewPortfolio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="12dp"
+                android:paddingBottom="32dp"
+                android:clipToPadding="false"
+                android:nestedScrollingEnabled="false" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

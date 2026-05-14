@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+╔══════════════════════════════════════════════════════════════════╗
+║  activity_furniture_catalog.xml  —  CATALOG SCREEN LAYOUT        ║
+╚══════════════════════════════════════════════════════════════════╝
+
+STRUCTURE:
+  CoordinatorLayout (allows toolbar to interact with scroll)
+    └── AppBarLayout
+    │     └── MaterialToolbar  (top bar with title)
+    └── NestedScrollView  (smooth scrolling for RecyclerView)
+          └── RecyclerView  (the scrollable cards list)
+-->
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF8F2">
+
+    <!-- ── TOP APP BAR ──────────────────────────────────────────────────── -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        app:elevation="4dp">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="Furniture Catalog"
+            app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            app:titleTextColor="#1C1917"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:navigationIconTint="#1C1917"
+            android:background="#FFFFFF" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- ── RECYCLERVIEW ─────────────────────────────────────────────────── -->
+    <!--
+        app:layout_behavior tells this view to sit BELOW the AppBar automatically.
+        clipToPadding="false" + paddingTop lets the first card not hide under the bar.
+    -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewFurniture"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="12dp"
+        android:paddingBottom="24dp"
+        android:clipToPadding="false"
+        android:scrollbarStyle="outsideOverlay"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

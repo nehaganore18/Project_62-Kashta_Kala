@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+╔══════════════════════════════════════════════════════════════════════╗
+║  activity_cost_estimator.xml  —  COST ESTIMATOR SCREEN LAYOUT       ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+SCREEN LAYOUT (top → bottom):
+  ┌──────────────────────────────────────┐
+  │  ←  Toolbar  "Cost Estimator"        │
+  ├──────────────────────────────────────┤
+  │  💰  Header card  (icon + subtitle)  │
+  ├──────────────────────────────────────┤
+  │  INPUT CARD                          │
+  │    ₹  Material Cost field            │
+  │    🔨 Labor Cost field               │
+  │    [CALCULATE TOTAL]  button         │
+  │    [CLEAR]            button         │
+  ├──────────────────────────────────────┤
+  │  RESULT CARD  (hidden until calc)    │
+  │    Total Cost  (big number)          │
+  │    Material + Labor breakdown chips  │
+  ├──────────────────────────────────────┤
+  │  Formula reference strip             │
+  └──────────────────────────────────────┘
+-->
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF8F2">
+
+    <!-- ── TOP APP BAR ──────────────────────────────────────────────────── -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        app:elevation="3dp">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="Cost Estimator"
+            app:titleTextColor="#1C1917"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:navigationIconTint="#1C1917"
+            android:background="#FFFFFF" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- ── SCROLLABLE BODY ──────────────────────────────────────────────── -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:paddingTop="?attr/actionBarSize"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- ── HEADER CARD ─────────────────────────────────────────── -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#FDF4FF"
+                app:strokeColor="#E9D5FF"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="20dp"
+                    android:gravity="center_vertical">
+
+                    <!-- Purple icon circle -->
+                    <FrameLayout
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:background="@drawable/bg_icon_circle_purple">
+
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_payments"
+                            android:contentDescription="Cost icon"
+                            app:tint="#4C1D95" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Project Cost Estimator"
+                            android:textColor="#1C1917"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="Add material and labor costs to get total budget"
+                            android:textColor="#78716C"
+                            android:textSize="12sp"
+                            android:lineSpacingMultiplier="1.3" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ── INPUT CARD ──────────────────────────────────────────── -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="3dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:strokeColor="#F5F0E8"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <!-- Section label -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:text="ENTER COSTS"
+                        android:textColor="#6D28D9"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.12" />
+
+                    <!-- MATERIAL COST INPUT ───────────────────────────── -->
+                    <!--
+                        prefixText="₹" shows a rupee symbol inside the field.
+                        inputType="numberDecimal" shows a numeric keyboard
+                        and allows decimal points (e.g. 1500.50).
+                    -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilMaterialCost"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:hint="Material Cost"
+                        app:prefixText="₹ "
+                        app:prefixTextColor="#6D28D9"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxBackgroundColor="#FDFAFF"
+                        app:boxStrokeColor="#7C3AED"
+                        app:hintTextColor="#7C3AED"
+                        app:endIconMode="custom"
+                        app:endIconDrawable="@drawable/ic_wood_grain"
+                        app:endIconTint="#7C3AED">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etMaterialCost"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:textColor="#1C1917"
+                            android:textSize="16sp"
+                            android:paddingTop="16dp"
+                            android:paddingBottom="16dp"
+                            android:imeOptions="actionNext" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- LABOR COST INPUT ──────────────────────────────── -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilLaborCost"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Labor Cost"
+                        app:prefixText="₹ "
+                        app:prefixTextColor="#6D28D9"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxBackgroundColor="#FDFAFF"
+                        app:boxStrokeColor="#7C3AED"
+                        app:hintTextColor="#7C3AED"
+                        app:endIconMode="custom"
+                        app:endIconDrawable="@drawable/ic_chair"
+                        app:endIconTint="#7C3AED">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etLaborCost"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:textColor="#1C1917"
+                            android:textSize="16sp"
+                            android:paddingTop="16dp"
+                            android:paddingBottom="16dp"
+                            android:imeOptions="actionDone" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- DIVIDER ────────────────────────────────────────── -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#F3F4F6"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="16dp" />
+
+                    <!-- CALCULATE BUTTON ───────────────────────────────── -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnEstimate"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:text="Calculate Total Cost"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF"
+                        android:letterSpacing="0.03"
+                        app:backgroundTint="#7C3AED"
+                        app:cornerRadius="14dp"
+                        app:rippleColor="#4C1D95"
+                        app:icon="@drawable/ic_payments"
+                        app:iconTint="#FFFFFF"
+                        app:iconGravity="textStart"
+                        app:iconPadding="8dp" />
+
+                    <!-- CLEAR BUTTON ───────────────────────────────────── -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnClear"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Clear"
+                        android:textSize="14sp"
+                        android:textColor="#6D28D9"
+                        app:backgroundTint="#F5F3FF"
+                        app:cornerRadius="12dp"
+                        app:rippleColor="#DDD6FE"
+                        app:strokeColor="#DDD6FE"
+                        app:strokeWidth="1dp" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ── RESULT CARD (hidden by default) ────────────────────── -->
+            <!--
+                android:visibility="gone" = invisible AND takes up no space.
+                We flip this to VISIBLE in Kotlin after a successful calculation.
+            -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:strokeColor="#C4B5FD"
+                app:strokeWidth="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp"
+                    android:gravity="center">
+
+                    <!-- Trophy / success icon -->
+                    <FrameLayout
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:background="@drawable/bg_icon_circle_purple"
+                        android:layout_marginBottom="16dp">
+
+                        <ImageView
+                            android:layout_width="34dp"
+                            android:layout_height="34dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_check_circle"
+                            android:contentDescription="Success"
+                            app:tint="#4C1D95" />
+                    </FrameLayout>
+
+                    <!-- Label -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ESTIMATED TOTAL COST"
+                        android:textColor="#6B7280"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.1"
+                        android:layout_marginBottom="8dp" />
+
+                    <!-- BIG TOTAL NUMBER -->
+                    <TextView
+                        android:id="@+id/tvTotalCost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="₹0.00"
+                        android:textColor="#4C1D95"
+                        android:textSize="40sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="4dp" />
+
+                    <!-- Breakdown formula echo -->
+                    <TextView
+                        android:id="@+id/tvBreakdownFormula"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="₹0  +  ₹0  =  ₹0"
+                        android:textColor="#9CA3AF"
+                        android:textSize="13sp"
+                        android:layout_marginBottom="20dp" />
+
+                    <!-- Divider -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#F3F4F6"
+                        android:layout_marginBottom="20dp" />
+
+                    <!-- TWO BREAKDOWN CHIPS ─────────────────────────── -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <!-- Material Cost Chip -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:background="@drawable/bg_chip_purple"
+                            android:padding="14dp"
+                            android:layout_marginEnd="8dp">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_wood_grain"
+                                android:contentDescription="Material"
+                                android:layout_marginBottom="6dp"
+                                app:tint="#6D28D9" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="MATERIAL"
+                                android:textColor="#7C3AED"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                android:letterSpacing="0.08" />
+
+                            <TextView
+                                android:id="@+id/tvMaterialChip"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="₹0.00"
+                                android:textColor="#1C1917"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:layout_marginTop="3dp" />
+                        </LinearLayout>
+
+                        <!-- Labor Cost Chip -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:background="@drawable/bg_chip_purple"
+                            android:padding="14dp"
+                            android:layout_marginStart="8dp">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_chair"
+                                android:contentDescription="Labor"
+                                android:layout_marginBottom="6dp"
+                                app:tint="#6D28D9" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="LABOR"
+                                android:textColor="#7C3AED"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                android:letterSpacing="0.08" />
+
+                            <TextView
+                                android:id="@+id/tvLaborChip"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="₹0.00"
+                                android:textColor="#1C1917"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:layout_marginTop="3dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- PERCENTAGE BREAKDOWN BAR ───────────────────────── -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="6dp"
+                        android:text="COST SPLIT"
+                        android:textColor="#9CA3AF"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.1" />
+
+                    <!-- Progress-bar style split indicator -->
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:background="@drawable/bg_bar_track">
+
+                        <!-- Purple fill = material % of total -->
+                        <View
+                            android:id="@+id/viewMaterialBar"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_bar_fill" />
+                    </FrameLayout>
+
+                    <!-- Bar legend -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="6dp">
+
+                        <!-- dot + Material label -->
+                        <View
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:layout_marginTop="3dp"
+                            android:background="@drawable/bg_dot_purple" />
+
+                        <TextView
+                            android:id="@+id/tvMaterialPct"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="6dp"
+                            android:text="Material 0%"
+                            android:textColor="#6B7280"
+                            android:textSize="11sp" />
+
+                        <!-- dot + Labor label -->
+                        <View
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:layout_marginTop="3dp"
+                            android:background="@drawable/bg_dot_gray" />
+
+                        <TextView
+                            android:id="@+id/tvLaborPct"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="6dp"
+                            android:text="Labor 0%"
+                            android:textColor="#6B7280"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ── FORMULA REFERENCE CARD ──────────────────────────────── -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#F5F3FF"
+                app:strokeColor="#DDD6FE"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="💡  Formula Used"
+                        android:textColor="#4C1D95"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total Cost  =  Material Cost  +  Labor Cost"
+                        android:textColor="#1C1917"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="6dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tip: Add 10–15% buffer for unexpected expenses."
+                        android:textColor="#78716C"
+                        android:textSize="12sp"
+                        android:lineSpacingMultiplier="1.4" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
