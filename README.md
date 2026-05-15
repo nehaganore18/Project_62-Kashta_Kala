@@ -146,52 +146,6 @@ Firestore Storage Authentication
 ---
 
 
-```
-
----
-
-# ⚙️ Installation & Setup
-
-## Prerequisites
-
-- Android Studio
-- Android SDK
-- Firebase Project
-- Google Maps API Key
-
----
-
-# Clone Repository
-
-```bash
-git clone https://github.com/nehaganore18/Project_62-Kashta_Kala.git
-```
-
----
-
-# Open Project
-
-1. Open Android Studio
-2. Select the project folder
-3. Sync Gradle files
-
----
-
-# Firebase Setup
-
-1. Create Firebase project
-2. Enable Authentication & Firestore
-3. Add `google-services.json` inside `/app`
-
----
-
-# Run Application
-
-```bash
-Build → Sync → Run App
-```
-
----
 
 # 📊 Evaluation-Oriented Highlights
 
