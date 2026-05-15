@@ -145,21 +145,7 @@ Firestore Storage Authentication
 
 ---
 
-# 📂 Project Structure
 
-```text
-Kashta-Kala/
-│
-├── app/
-├── screenshots/
-├── ui/
-├── data/
-├── firebase/
-├── services/
-├── viewmodel/
-├── README.md
-├── build.gradle.kts
-└── settings.gradle.kts
 ```
 
 ---
