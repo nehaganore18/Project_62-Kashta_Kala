@@ -122,140 +122,6 @@ The platform is designed to be lightweight, practical, and user-friendly for rea
 
 ---
 
-# 📱 Application Screenshots
-
-## 👨‍💼 Admin Module
-
-### 🏠 Admin Homepage
-<p align="center">
-  <img src="screenshots/admin_homepage.png" width="250"/>
-</p>
-
-### 🪑 Furniture Catalog Management
-<p align="center">
-  <img src="screenshots/admin_furniture_catalog.png" width="250"/>
-  <img src="screenshots/admin_furniture_catalog1.png" width="250"/>
-</p>
-
-### 🖼️ Admin Portfolio
-<p align="center">
-  <img src="screenshots/admin_myportfolio.png" width="250"/>
-  <img src="screenshots/admin_myportfolio1.png" width="250"/>
-</p>
-
-### 🔐 Admin Login
-<p align="center">
-  <img src="screenshots/admin_login.png" width="250"/>
-</p>
-
----
-
-# 👤 Customer Module
-
-### 🏠 Customer Homepage
-<p align="center">
-  <img src="screenshots/customer_homepage.png" width="250"/>
-</p>
-
-### 🖼️ Customer Portfolio
-<p align="center">
-  <img src="screenshots/customer_portfolio_page.png" width="250"/>
-  <img src="screenshots/customer_portfolio_page1.png" width="250"/>
-</p>
-
-### 🔐 Customer Login
-<p align="center">
-  <img src="screenshots/customer_login.png" width="250"/>
-</p>
-
----
-
-# 📐 Wood Cost Estimator
-
-### 💰 Material Cost Calculator
-<p align="center">
-  <img src="screenshots/cost_estimator.png" width="250"/>
-  <img src="screenshots/cost_estimator1.png" width="250"/>
-</p>
-
-### 🪵 Wood Calculation System
-<p align="center">
-  <img src="screenshots/wood_calculator.png" width="250"/>
-  <img src="screenshots/wood_calculator1.png" width="250"/>
-</p>
-
----
-
-# 📱 Application Screenshots
-
-## 👨‍💼 Admin Module
-
-### 🏠 Admin Homepage
-<p align="center">
-  <img src="screenshots/admin_homepage.png" width="250"/>
-</p>
-
-### 🪑 Furniture Catalog Management
-<p align="center">
-  <img src="screenshots/admin_furniture_catalog.png" width="250"/>
-  <img src="screenshots/admin_furniture_catalog1.png" width="250"/>
-</p>
-
-### 🖼️ Admin Portfolio
-<p align="center">
-  <img src="screenshots/admin_myportfolio.png" width="250"/>
-  <img src="screenshots/admin_myportfolio1.png" width="250"/>
-</p>
-
-### 🔐 Admin Login
-<p align="center">
-  <img src="screenshots/admin_login.png" width="250"/>
-</p>
-
----
-
-# 👤 Customer Module
-
-### 🏠 Customer Homepage
-<p align="center">
-  <img src="screenshots/customer_homepage.png" width="250"/>
-</p>
-
-### 🖼️ Customer Portfolio
-<p align="center">
-  <img src="screenshots/customer_portfolio_page.png" width="250"/>
-  <img src="screenshots/customer_portfolio_page1.png" width="250"/>
-</p>
-
-### 🔐 Customer Login
-<p align="center">
-  <img src="screenshots/customer_login.png" width="250"/>
-</p>
-
----
-
-# 📐 Wood Cost Estimator
-
-### 💰 Material Cost Calculator
-<p align="center">
-  <img src="screenshots/cost_estimator.png" width="250"/>
-  <img src="screenshots/cost_estimator1.png" width="250"/>
-</p>
-
-### 🪵 Wood Calculation System
-<p align="center">
-  <img src="screenshots/wood_calculator.png" width="250"/>
-  <img src="screenshots/wood_calculator1.png" width="250"/>
-</p>
-
----
-
-# 🎨 Application Branding
-
-### 📱 App Logo
-<p align="center">
-  <img src="screenshots/logo.png" width="200"/>
-</p>
 # 🏗️ System Architecture
 
 ```text
@@ -265,3 +131,129 @@ Android Application
 Firebase Backend Services
    │        │        │
 Firestore Storage Authentication
+```
+
+---
+
+
+# 🎨 Application Branding
+
+### 🪵 Kashta-Kala Logo
+<p align="center">
+  <img src="Screenshots/logo.png" width="180"/>
+</p>
+
+---
+
+# 📂 Project Structure
+
+```text
+Kashta-Kala/
+│
+├── app/
+├── screenshots/
+├── ui/
+├── data/
+├── firebase/
+├── services/
+├── viewmodel/
+├── README.md
+├── build.gradle.kts
+└── settings.gradle.kts
+```
+
+---
+
+# ⚙️ Installation & Setup
+
+## Prerequisites
+
+- Android Studio
+- Android SDK
+- Firebase Project
+- Google Maps API Key
+
+---
+
+# Clone Repository
+
+```bash
+git clone https://github.com/nehaganore18/Project_62-Kashta_Kala.git
+```
+
+---
+
+# Open Project
+
+1. Open Android Studio
+2. Select the project folder
+3. Sync Gradle files
+
+---
+
+# Firebase Setup
+
+1. Create Firebase project
+2. Enable Authentication & Firestore
+3. Add `google-services.json` inside `/app`
+
+---
+
+# Run Application
+
+```bash
+Build → Sync → Run App
+```
+
+---
+
+# 📊 Evaluation-Oriented Highlights
+
+✅ Real-world problem solving  
+✅ Professional Android architecture  
+✅ Firebase cloud integration  
+✅ Modern Material 3 UI  
+✅ Organized project structure  
+✅ Scalable implementation  
+✅ Professional documentation  
+✅ Industry-focused solution
+
+---
+
+# 🔮 Future Enhancements
+
+- 🛒 Online furniture ordering
+- 💳 Payment gateway integration
+- 🌐 Multi-language support
+- 📈 Business analytics dashboard
+- 🧾 Invoice generation system
+- 📦 Inventory management
+
+---
+
+# 🎯 Target Users
+
+- Local carpenters
+- Furniture workshops
+- Interior designers
+- Woodworking businesses
+- Furniture startups
+
+---
+
+# 👩‍💻 Developed By
+
+## Neha Ganore
+### B.E. – Artificial Intelligence & Machine Learning
+
+---
+
+# 📜 License
+
+Developed for academic and educational purposes.
+
+---
+
+# ⭐ Conclusion
+
+Kashta-Kala provides a professional digital solution for carpenters and furniture artisans by simplifying quotation management, project organization, and furniture showcasing through an easy-to-use Android platform.
