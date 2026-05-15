@@ -122,6 +122,140 @@ The platform is designed to be lightweight, practical, and user-friendly for rea
 
 ---
 
+# 📱 Application Screenshots
+
+## 👨‍💼 Admin Module
+
+### 🏠 Admin Homepage
+<p align="center">
+  <img src="screenshots/admin_homepage.png" width="250"/>
+</p>
+
+### 🪑 Furniture Catalog Management
+<p align="center">
+  <img src="screenshots/admin_furniture_catalog.png" width="250"/>
+  <img src="screenshots/admin_furniture_catalog1.png" width="250"/>
+</p>
+
+### 🖼️ Admin Portfolio
+<p align="center">
+  <img src="screenshots/admin_myportfolio.png" width="250"/>
+  <img src="screenshots/admin_myportfolio1.png" width="250"/>
+</p>
+
+### 🔐 Admin Login
+<p align="center">
+  <img src="screenshots/admin_login.png" width="250"/>
+</p>
+
+---
+
+# 👤 Customer Module
+
+### 🏠 Customer Homepage
+<p align="center">
+  <img src="screenshots/customer_homepage.png" width="250"/>
+</p>
+
+### 🖼️ Customer Portfolio
+<p align="center">
+  <img src="screenshots/customer_portfolio_page.png" width="250"/>
+  <img src="screenshots/customer_portfolio_page1.png" width="250"/>
+</p>
+
+### 🔐 Customer Login
+<p align="center">
+  <img src="screenshots/customer_login.png" width="250"/>
+</p>
+
+---
+
+# 📐 Wood Cost Estimator
+
+### 💰 Material Cost Calculator
+<p align="center">
+  <img src="screenshots/cost_estimator.png" width="250"/>
+  <img src="screenshots/cost_estimator1.png" width="250"/>
+</p>
+
+### 🪵 Wood Calculation System
+<p align="center">
+  <img src="screenshots/wood_calculator.png" width="250"/>
+  <img src="screenshots/wood_calculator1.png" width="250"/>
+</p>
+
+---
+
+# 📱 Application Screenshots
+
+## 👨‍💼 Admin Module
+
+### 🏠 Admin Homepage
+<p align="center">
+  <img src="screenshots/admin_homepage.png" width="250"/>
+</p>
+
+### 🪑 Furniture Catalog Management
+<p align="center">
+  <img src="screenshots/admin_furniture_catalog.png" width="250"/>
+  <img src="screenshots/admin_furniture_catalog1.png" width="250"/>
+</p>
+
+### 🖼️ Admin Portfolio
+<p align="center">
+  <img src="screenshots/admin_myportfolio.png" width="250"/>
+  <img src="screenshots/admin_myportfolio1.png" width="250"/>
+</p>
+
+### 🔐 Admin Login
+<p align="center">
+  <img src="screenshots/admin_login.png" width="250"/>
+</p>
+
+---
+
+# 👤 Customer Module
+
+### 🏠 Customer Homepage
+<p align="center">
+  <img src="screenshots/customer_homepage.png" width="250"/>
+</p>
+
+### 🖼️ Customer Portfolio
+<p align="center">
+  <img src="screenshots/customer_portfolio_page.png" width="250"/>
+  <img src="screenshots/customer_portfolio_page1.png" width="250"/>
+</p>
+
+### 🔐 Customer Login
+<p align="center">
+  <img src="screenshots/customer_login.png" width="250"/>
+</p>
+
+---
+
+# 📐 Wood Cost Estimator
+
+### 💰 Material Cost Calculator
+<p align="center">
+  <img src="screenshots/cost_estimator.png" width="250"/>
+  <img src="screenshots/cost_estimator1.png" width="250"/>
+</p>
+
+### 🪵 Wood Calculation System
+<p align="center">
+  <img src="screenshots/wood_calculator.png" width="250"/>
+  <img src="screenshots/wood_calculator1.png" width="250"/>
+</p>
+
+---
+
+# 🎨 Application Branding
+
+### 📱 App Logo
+<p align="center">
+  <img src="screenshots/logo.png" width="200"/>
+</p>
 # 🏗️ System Architecture
 
 ```text
