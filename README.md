@@ -1,14 +1,14 @@
 # 🪵 Kashta-Kala (काष्ठ-कला)
-## AI-Powered Digital Workspace for Modern Wood Artisans
+## Digital Workspace for Modern Wood Artisans
 
 <div align="center">
 
 ![Android](https://img.shields.io/badge/Platform-Android-green?style=for-the-badge)
 ![Kotlin](https://img.shields.io/badge/Built%20With-Kotlin-purple?style=for-the-badge)
 ![Firebase](https://img.shields.io/badge/Backend-Firebase-orange?style=for-the-badge)
-![GenAI](https://img.shields.io/badge/Powered%20By-Generative%20AI-blue?style=for-the-badge)
+![Material3](https://img.shields.io/badge/UI-Material%203-blue?style=for-the-badge)
 
-### *Transforming Traditional Craftsmanship into a Smart Digital Experience*
+### *Bridging Traditional Craftsmanship with Modern Digital Management*
 
 </div>
 
@@ -16,152 +16,118 @@
 
 # 📌 Overview
 
-**Kashta-Kala** is an intelligent Android application developed to digitally empower carpenters, furniture designers, and small woodworking businesses by combining modern mobile technology with AI-driven assistance.
+Kashta-Kala is a modern Android application designed to help carpenters, furniture makers, and woodworking artisans manage their business digitally through a professional mobile platform.
 
-The application serves as a complete digital workspace where artisans can:
+The application simplifies everyday business activities such as:
 
-✅ Showcase furniture portfolios  
-✅ Manage customer inquiries  
-✅ Generate material estimations  
-✅ Maintain project catalogs  
-✅ Access AI-based design inspirations  
-✅ Improve business visibility digitally
+- Managing furniture portfolios
+- Handling customer inquiries
+- Organizing quotations
+- Estimating material costs
+- Showcasing craftsmanship digitally
 
-Kashta-Kala bridges the gap between traditional craftsmanship and modern digital business management.
+Kashta-Kala aims to support traditional artisans by providing easy-to-use digital tools that improve professionalism, efficiency, and customer reach.
 
 ---
 
 # ❗ Problem Statement
 
-Many local carpenters and furniture artisans still depend on offline methods such as physical catalogs, manual quotations, and word-of-mouth marketing.
+Traditional carpenters often rely on manual methods for managing quotations, showcasing designs, and communicating with customers.
 
-This creates several business limitations:
+This creates several challenges:
 
-- Limited customer reach
-- No professional digital portfolio
-- Difficulty handling quotations
-- Poor inventory visualization
-- Lack of technological adoption
-- Manual project estimation challenges
+- Limited online visibility
+- Difficulty maintaining physical catalogs
+- Manual quotation preparation
+- Poor project organization
+- Lack of digital business presence
 
-As digital commerce rapidly expands, traditional artisans require an affordable and user-friendly platform to modernize their workflow.
+Small woodworking businesses require a simple and affordable digital solution to modernize their workflow and reach more customers.
 
 ---
 
 # 💡 Proposed Solution
 
-Kashta-Kala provides a centralized digital platform specially designed for the woodworking industry.
+Kashta-Kala provides a centralized digital platform where artisans can:
 
-The application enables artisans to:
+✅ Upload and organize furniture designs  
+✅ Maintain digital catalogs  
+✅ Generate material estimations  
+✅ Manage customer details  
+✅ Track quotations professionally  
+✅ Showcase their work through a modern mobile interface
 
-- Digitally manage furniture designs
-- Upload and categorize products
-- Calculate material estimates intelligently
-- Handle client communication professionally
-- Showcase work through a premium portfolio system
-- Use Generative AI for design recommendations and creativity enhancement
-
-The platform focuses on simplicity, accessibility, and real-world usability for small businesses and independent artisans.
+The platform is designed to be lightweight, practical, and user-friendly for real-world business usage.
 
 ---
 
 # ✨ Core Features
 
-# 📐 Smart Material Estimator
-An intelligent estimation module for woodwork calculations.
-
-### Features:
-- Cubic Feet (CFT) calculations
-- Dynamic wood quantity estimation
-- Real-time pricing support
-- Multiple wood-type handling
-- Precision dimension input system
+## 📐 Material Estimation System
+- Wood quantity calculations
+- Dynamic dimension input
+- Cost estimation support
+- Multiple wood type handling
 
 ---
 
-# 📄 Professional Quotation Management
-Generate and organize customer quotations efficiently.
-
-### Includes:
-- Quote creation dashboard
-- Customer detail management
-- Status tracking system
-- Future PDF export support
-- Organized quotation history
+## 📄 Quotation Management
+- Create and manage quotations
+- Organize client details
+- Track project status
+- Maintain quotation history
 
 ---
 
-# 🖼️ Digital Furniture Portfolio
-A professional showcase system for artisan craftsmanship.
-
-### Capabilities:
-- Furniture image gallery
-- Category-based organization
+## 🖼️ Furniture Portfolio
+- Showcase furniture designs
+- Categorized image gallery
 - Product descriptions
-- Premium catalog experience
-- Showcase standard pricing
+- Professional digital catalog
 
 ---
 
-# 🤖 AI-Powered Design Assistance
-Integrated Generative AI features for innovation and creativity.
-
-### AI Features:
-- Furniture design suggestions
-- Modern style inspirations
-- Smart recommendation system
-- Future AI visualization support
-
----
-
-# 📍 Smart Site & Delivery Tracking
-Efficient project and delivery management.
-
-### Includes:
-- GPS-enabled location tagging
+## 📍 Location & Site Tracking
 - Google Maps integration
-- Delivery location management
-- Project site tracking
+- Project location tagging
+- Delivery tracking support
 
 ---
 
-# 🔐 Secure Authentication System
-Secure user management powered by Firebase Authentication.
-
-### Supports:
-- User registration
-- Login system
-- Session handling
-- Secure cloud integration
-
----
-
-# ☁️ Cloud Backend Infrastructure
-
-Kashta-Kala uses Firebase services for scalable cloud-based operations.
-
-### Firebase Services Used:
+## 🔐 Secure Authentication
 - Firebase Authentication
-- Cloud Firestore
-- Firebase Storage
-- Real-time synchronization
+- User login & registration
+- Secure access management
+
+---
+
+## ☁️ Cloud Data Storage
+- Firebase Firestore integration
+- Real-time database support
+- Cloud image storage
+
+---
+
+# 🛠️ Technology Stack
+
+| Technology | Purpose |
+|---|---|
+| Kotlin | Android App Development |
+| Jetpack Compose | Modern UI Development |
+| Firebase Authentication | User Security |
+| Firebase Firestore | Cloud Database |
+| Firebase Storage | Image Storage |
+| Google Maps SDK | Location Services |
+| Material 3 | UI Design |
 
 ---
 
 # 🏗️ System Architecture
 
 ```text
-          ┌─────────────────────┐
-          │     Android App     │
-          └─────────┬───────────┘
-                    │
-        ┌───────────▼───────────┐
-        │   Firebase Backend    │
-        └───────────┬───────────┘
-                    │
-     ┌──────────────┼──────────────┐
-     │              │              │
-Firestore      Storage        Authentication
-     │
-     ▼
-Generative AI Recommendation Engine
+Android Application
+        │
+        ▼
+Firebase Backend Services
+   │        │        │
+Firestore Storage Authentication
